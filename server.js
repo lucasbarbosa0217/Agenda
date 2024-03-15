@@ -37,13 +37,13 @@ const sessionOptions = session({
       httpOnly: true
     }
   });
-  app.use(sessionOptions);
-  app.use(flash());
+
+app.use(sessionOptions);
+app.use(flash());
 app.set("views", path.resolve(__dirname, "src", "views"))
 app.set("view engine", "ejs")
 
 app.use(csrf());
-
 
 app.use(MiddlewareGlobal)
 app.use(checkCsrfError);

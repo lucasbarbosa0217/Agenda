@@ -1,10 +1,6 @@
-const Home = require("../models/HomeModel")
+const Contato = require("../models/contatoModel")
 
-
-exports.index = (req, res, next) => {
-
-    res.render("index")
-    next();
+exports.index = async (req, res, next) => {
+        const contatos = await Contato.buscaContatos()
+        res.render("index", {contatos});
 }
-
-console.log(Home)

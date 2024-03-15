@@ -10,20 +10,23 @@
 
         <p class="text-center lead">Seus contatos estão abaixo:</p>
 
-        <div class="row">
-          <div class="col my-3">
-            <div class="alert alert-danger">Um erro</div>
-          </div>
-        </div>
+        <%- include("includes/messages")%>
+      
         <div class="responsiv-table">
           <table class="table my-3">
+            <%if(contatos.length > 0){contatos.forEach((contate) => { console.log(contate._id)%>
             <tr>
-              <td>Lucas</td>
-              <td>Barbosa</td>
-              <td>11951608481</td>
-              <td>lcuasbarbosa0217@gmail.com</td>
+              <td><%=contate.nome%></td>
+    
+              <td><%= contate.telefone%> </td>
+              <td><%= contate.email%></td>
+              <% let id = contate._id%>
+              <td><a href="/contato/index/<%=id%>">Editar</a></td>
+              <td><a class="text-danger"href="/contato/delete/<%=id%>">Apagar</a></td>
             </tr>
-           
+           <%})}else{%>
+            <tr><td>Não foram encontrados contatos... que tal <a href="/contato/index">criar</a> um?</td></tr>
+            <%}%>
           </table>
         </div>
     </div>
